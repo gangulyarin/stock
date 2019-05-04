@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Stock Market App</h2>
+    <div *ngFor="let stock of stocks | async; index as i; trackBy code">
+        <app-stock-item [stock]="stock" (stockEmitter)="addToFavourite($event)"></app-stock-item>
+    </div>
+</div>
+<div class="container">
+        <h3>Favourites :</h3>
+    <div class="well">
+        <ul *ngFor="let favStock of favouriteStocks">
+            <li>{{favStock.name}}</li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <app-create-stock (newStock)="addComponent($event)"></app-create-stock>
+</div>

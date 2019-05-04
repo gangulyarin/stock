@@ -1,0 +1,13 @@
+
+      <div class="col-sm-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{stock.name}}</div>
+        <div class="panel-body">
+          <div [ngClass]="stock.stockClasses">Price: {{stock.price}}</div>
+          <span><button class="btn btn-primary btn-xs" [disabled]="stock.favourite" (click)="toggleFavourite()">Add to favourites</button></span>
+          <span *ngIf="stock.favourite"><button class="btn btn-primary  btn-xs"  (click)="toggleFavourite()">Remove</button>
+          </span>
+        </div>
+    </div>
+  </div>  
+  

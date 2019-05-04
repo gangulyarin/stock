@@ -1,0 +1,28 @@
+<div class="form-group">
+  <form [formGroup]="stockForm">
+    Name: <input type="text" name="stockName" 
+    formControlName="name" />
+    Code: <input type="text" name="stockCode" 
+    formControlName="code" />
+    Price: <input type="text" name="stockPrice" 
+    formControlName="price" />
+    <button type="submit" class="btn btn-primary" (click)="submitStock()">Submit</button>
+    <!--<button type="button" class="btn btn-primary" (click)="loadFromServer()">Load</button>
+    <button type="button" class="btn btn-primary" (click)="patch()">Patch</button> -->
+  </form>
+</div>
+
+<div class="alert alert-danger" *ngIf="stockForm.get('name').dirty && stockForm.get('name').invalid">
+  <div *ngIf="stockForm.get('name').errors.required">
+    Name is Required
+  </div>
+</div>
+<div class="alert alert-danger" *ngIf="stockForm.get('code').dirty && stockForm.get('code').invalid">
+    <div *ngIf="stockForm.get('code').errors.required">
+      Code is Required
+    </div>
+    <div *ngIf="stockForm.get('code').errors.minlength">
+        Code should be atleast 2 in length
+      </div>
+  </div><!--
+<p>Form Control value: {{ stockForm.value | json }}</p> -->

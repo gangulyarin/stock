@@ -1,0 +1,42 @@
+<div class="form-group">
+    <form (ngSubmit)="createStock(stockForm)" #stockForm="ngForm">
+  <div class="stock-name">
+    Name: 
+    <input class="form-control" type="text" 
+    (input)="stock.name=$event.target.value" 
+    [value]="stock.name"
+    required name="sName"
+    #stockName="ngModel"
+    >
+    <br>
+  </div>
+  <div class="stock-code">
+    Code:
+      <input type="text" placeholder="Stock Code" class="form-control"
+             name="sCode" minlength="2"
+             required 
+             #stockCode="stock.code"
+             [(ngModel)]="stock.code">
+  </div>
+  <div class="stock-price">
+      Price: 
+      <input class="form-control" type="text" (ngModelChange)="setStockPrice($event)" 
+      [ngModel]="stock.price" />
+  </div>
+  <button class="btn btn-primary" type="submit">Create</button>
+  </form>
+</div>
+<span><h4>Name:</h4></span>
+<div class="alert alert-danger" *ngIf="stockName.dirty && stockName.invalid">
+  <div *ngIf="stockName.errors.required">
+    Name is Required
+  </div>
+</div>
+<div class="alert alert-danger" *ngIf="stockCodeName.dirty && stockCode.invalid">
+    <div *ngIf="stockCode.errors.required">
+      Code is Required
+    </div>
+    <div *ngIf="stockCode.errors.minlength">
+        Code should be atleast 2 in length
+      </div>
+  </div>
